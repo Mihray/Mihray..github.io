@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>提交表单</title>
+</head>
+<style>
+    body{
+      font-size: 1.5vw;  
+      background-color: #f9fafb;
+      margin: 0;
+      padding: 0;
+    }
+    #box{
+        font-size: 15px;
+        width: 330px;
+        height: 525px;
+        margin-top:75px;
+        margin-left:1rem;
+        background-color: white;
+        border: 1px solid #f9fafb;
+        box-shadow:0 2px 10px rgb(0 0 0 / 30%);
+        border-radius: 6px;
+        padding: 0px 30px 20px 30px;
+    }
+    #box h2{
+        text-align: center;
+    }
+    #box p{
+        margin-top: 10px;
+        color:#807777
+    }
+    #box input{
+        width: 324px;
+        height:30px;
+        border: 2px solid #f0f0f0;
+        border-radius: 3px;
+        outline: none;
+    }
+    #box input:focus{
+        border: 2px rgb(125, 120, 120) solid;
+    }
+    #form #submit{
+        width: 330px;
+        height:36px ;
+        margin-top: 30px;
+        background-color: rgb(52, 152, 219);
+        border: 1px rgb(52, 152, 219);
+        border-radius: 3px;
+        color: #fff;
+        cursor:pointer;
+    }
+    #form span{
+        color:red;
+        visibility:hidden;
+    }
+</style>
+<body>
+    <div id="box" class="box">
+        <form id="form" method="post"  class="form" action="#">
+            <h2>注册</h2>
+            <p>姓名</p>
+             <input type="text" id="name" placeholder="请输入姓名">
+             <span id="name-span">姓名不符合要求，请重新填写</span>
+            <p>邮箱</p>
+            <input type="text" id="e-mail" placeholder="请输入邮箱">
+            <span id="e-mail-span">邮箱不符合要求，请重新填写</span>
+            <p>密码</p>
+            <input type="password" id="password" placeholder="请输入密码,由字母开头，包含字母、数字、下划线，6-16位">
+            <span id="password-span">密码不符合要求，请重新填写</span>
+            <p>确认密码</p>
+            <input type="password" id="sure-password" placeholder="请输入邮箱">
+            <span id="sure-password-span">密码不正确，请重新填写</span>
+            <input id="submit" type="submit" value="提交">
+        </form>
+    </div>
+    <script>
+        //实现rem布局
+        setInterval(function(){
+        document.documentElement.style.fontSize=document.documentElement.clientWidth/350*100+'px';
+        var w=window.innerWidth;
+        var h=window.innerHeight;
+        },10)
+
+        //验证姓名
+        function validate_name(str){
+            //输入6-20个字符串
+            var regexp=/^(\w){6,20}$/
+            return regexp.test(str)
+        }
+        //验证邮箱
+        function validate_e_mail(str){
+            var regexp=/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/
+            return regexp.test(str)
+        }
+        //验证密码
+        function validate_password(str){
+            var regexp=/^[a-zA-Z]\w{5,15}$/
+            return regexp.test(str)
+        }
+        
+        //获取id
+        var oname=document.getElementById('name')
+        var oe_mail=document.getElementById('e-mail')
+        var opassword=document.getElementById('password')
+        var osure_password=document.getElementById('sure-password')
+        var osubmit=document.getElementById('submit') 
+        function validate_osure_password(){
+            if(opassword.value===osure_password.value){
+            return true;}else{
+                return false;
+            }
+        }
+
+
+        osubmit.onclick = function (e) {
+            console.log(222);
+            e.preventDefault()
+            console.log(111);
+            // return false
+        }
+        // const toBeSent = 'xx'
+        // osubmit.onclick = function () {
+        //     if(validate(data)) {
+        //     send('url', toBeSent)
+        //     navigate('anoUrl')
+        //     } else {
+        //         alert('你数据有问题')
+        //     }
+        // }
+
+        //姓名不符合要求的提示
+        oname.onblur=function(){
+            if(validate_name(oname.value)===false){
+            //   alert("姓名不符合要求，请重新填写")
+            var ElementID=document.getElementById('name-span')
+            ElementID.style.visibility='visible'
+            }else{
+                var ElementID=document.getElementById('name-span')
+                ElementID.style.visibility='hidden'
+            }
+        }
+        //邮箱不符合要求的提示
+        oe_mail.onblur=function(){
+            if(validate_e_mail(oe_mail.value)===false){
+            //   alert("姓名不符合要求，请重新填写")
+            var ElementID=document.getElementById('e-mail-span')
+            ElementID.style.visibility='visible'
+            }else{
+                var ElementID=document.getElementById('e-mail-span')
+                ElementID.style.visibility='hidden'
+            }
+        }
+        
+        //密码不符合要求的提示
+        opassword.onblur=function(){
+            if(validate_password(opassword.value)===false){
+            //   alert("姓名不符合要求，请重新填写")
+            var ElementID=document.getElementById('password-span')
+            ElementID.style.visibility='visible'
+            }else{
+                var ElementID=document.getElementById('password-span')
+                ElementID.style.visibility='hidden'
+            }
+        }
+        //确认密码不符合要求的提示
+        osure_password.onblur=function(){
+            if(validate_osure_password()===false){
+            //   alert("姓名不符合要求，请重新填写")
+            var ElementID=document.getElementById('sure-password-span')
+            ElementID.style.visibility='visible'
+            }else{
+                var ElementID=document.getElementById('sure-password-span')
+                ElementID.style.visibility='hidden'
+            }
+        }
+
+        osubmit.onclick= function(e){
+             if(validate_name(oname.value)===true
+             &&validate_e_mail(oe_mail.value)===true
+             &&validate_password(opassword.value)===true
+             &&validate_osure_password()===true
+             ){
+					alert("登录成功");
+             } else {
+                e.preventDefault()
+                alert("填写内容不合法")
+             }
+            //  else{
+            //     if(validate_name(oname.value)===false)
+            //     oname.style.placeholder="姓名不符合要求，请重新填写"
+            //  }
+        }
+    </script>
+</body>
+</html>
