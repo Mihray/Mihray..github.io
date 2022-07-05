@@ -1,0 +1,166 @@
+*{
+    padding:0;
+    margin: 0;
+}
+body{ 
+    /* height: 100vh;
+    width: 100vw;
+    background-color: #b8e5f8;
+    background-image: url(./img/sign_bg.db29b0fb.png);
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-attachment:scroll;  */
+}
+.box_background{
+    height: 100vh;
+    width: 100vw;
+    background-color: #b8e5f8;
+    background-image: url(./img/sign_bg.db29b0fb.png);
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-attachment:fixed;
+}
+.box_cover{
+    
+}
+.img_logo{
+    width: 128px;
+    height: 81px;
+    margin: 0 auto;
+    padding-bottom: 24px;
+    padding-top: 50px;
+}
+.box_login{
+    width: 400px;
+    height:450px;
+    background-color: #fff; 
+    margin: 0 auto;
+    /* display: flex; */
+    /* font-weight: 700; */
+}
+.login_top_div{
+    display: flex;
+}
+.Password-free{
+ margin-left: 20px;
+ margin-right: 20px;
+ /* margin-top: 20px; */
+}
+.Password_login{
+ /* margin-top: 20px; */
+}
+.Password-free_button{
+ height:60px ;
+ font-size: 16px;
+ border-top:none;
+ border-left: none;
+ border-right: none;
+ border-bottom: none;
+ /* border-bottom: 3.5px solid #06f; */
+ background-color: #fff;
+}
+.Password-free_button-active {
+    /* display: none; */
+    font-weight: 700;
+    border-bottom: 3.5px solid #06f;
+}
+.Password-free_button:visited{
+    font-weight: 700;
+    border-bottom: 3.5px solid #06f;
+}
+
+.Password_login_button{
+ height:60px ;
+ font-size: 16px;
+ border-top:none;
+ border-left: none;
+ border-right: none;
+ border-bottom: none;
+ /* border-bottom: 3.5px solid #06f; */
+ background-color: #fff;
+}
+.Password_login_button-active{
+    font-weight: 700;
+    border-bottom: 3.5px solid #06f;
+}
+
+/* .Password_login_button:visited{
+    font-size: 700;
+    border-bottom: 3.5px solid #06f;
+} */
+/* .Password_login_button:active{
+    font-weight: 700;
+    border-bottom: 3.5px solid #06f;
+} */
+.Password_login_input,.Password-free_input{
+    width: 400px;
+    height: 245px;
+    padding-left: 20px;
+    padding-top: 40px;
+}
+
+.hide-password-login, .hide-password-free {
+    display: none;
+}
+
+.user_name,.user_phone{
+    width:350px;
+    height: 50px;
+    font-size: 16px;
+    background-image: transparent;
+    border-top:none;
+    border-left:none;
+    border-right: none;
+    border-bottom: 1px solid rgb(228, 224, 224);
+}
+.user_pow,.user_code{
+    width:350px;
+    height: 50px;
+    font-size: 16px;
+    border-top:none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid rgb(228, 224, 224);
+    /* border-bottom:1px; */
+}
+
+input {
+    outline: none;
+}
+.forget_pow_li{
+    
+    margin-top: 5px;
+    /* margin-left: 285px; */
+    list-style-type: none;
+    
+}
+.Password-free_li{
+    margin-top: 5px;
+    margin-left: 60px;
+    list-style-type: none;
+}
+.haiwai{
+    text-decoration-line: none;
+}
+.forget_pow{
+    margin-left: 175px;
+    text-decoration-line: none;
+    color:gray;
+}
+.forget_pow,.accept_code:hover{
+color:#8590a6;
+}
+.accept_code{
+    margin-left: 175px;
+    text-decoration-line: none;
+    color:gray;
+}
+.Password_login_btn,.Password-free_btn{
+    width:350px;
+    height: 37px;
+    margin-top: 40px;
+    background-color: #06f;
+    border:none;
+    border-radius: 3px;
+    color: #fff;
+}

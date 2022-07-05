@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./知乎登录页面.css">
+    <title>知乎</title>
+</head>
+<body>
+   <div class="box_background"> 
+    <div class="box_cover">
+        <div class="img_logo">
+            <img  src="./img/知乎.png" style="width:128px ; height: 81px;">
+        </div>
+        <div class="box_login">
+            <div class="login_top_div">
+                <div class="Password-free">
+                    <button class="Password-free_button " id="pwd-btn">免密码登录</button>
+                    <!-- <input  class="" type="text"> -->
+                </div>
+                <div class="Password_login">
+                    <button class="Password_login_button " id="pwd-lg-btn">密码登录</button>
+                </div>
+            </div>
+            <div class="Password_login_input hide-password-login" id="password-login-input">
+                <input type="text"  class="user_name" placeholder="手机号或邮箱">
+                <input type="possword"  class="user_pow"  placeholder="密码">
+                <li class="forget_pow_li">
+                    <a class="haiwai" href="#" target="_blank">海外手机号登录</a>
+                    <a class="forget_pow"href="#" target="_blank">忘记密码</a>
+                </li>
+                <button class="Password_login_btn" >注册/登录</button>
+            </div>
+            <div class="Password-free_input " id="password-free-input">
+                <input type="text"  class="user_phone" placeholder="手机号">
+                <input type="text"  class="user_code"  placeholder="输入6位验证码">
+                <li class="Password-free_li">
+                    <a class="accept_code"href="#" target="_blank">接受语音验证码</a>
+                </li>
+                <button class="Password-free_btn" >登录</button>
+            </div>
+        </div>
+    </div>
+   </div> 
+   <script>
+       const item = document.getElementsByClassName('Password-free_button')[0]
+    //    item.addEventListener('click',()=>{
+    //        item.setAttribute('class', 'Password-free_button Password-free_button-active')
+    //    })
+        const item2=document.getElementsByClassName('Password_login_button')[0]
+
+        const passwordFreeInput = document.getElementById('password-free-input')
+        const passwordLoginInput = document.getElementById('password-login-input')
+
+       item.onclick = function (params) {
+           item.setAttribute('class', 'Password-free_button Password-free_button-active') 
+           item2.setAttribute('class', 'Password_login_button') 
+           passwordLoginInput.setAttribute('class','hide-password-free')
+           passwordFreeInput.setAttribute('class','Password-free_input')
+           
+        }
+    
+       
+       item2.onclick=function(params){
+            item.setAttribute('class', 'Password-free_button') 
+           item2.setAttribute('class','Password_login_button Password_login_button-active')
+           
+           passwordFreeInput.setAttribute('class','hide-password-login')
+           passwordLoginInput.setAttribute('class', 'Password_login_input')
+    }
+   </script>
+</body>
+</html>
