@@ -117,13 +117,13 @@
         transform: scale(1.2); 
 		transition: all .3s; 
     }
-    .seated{
+    /* .seat.seated{
         width: 15px;
         height: 15px;
-        background-color:rgb(111,234,246);
+        background-color:rgb(68,68,81);
         border-radius: 50% 50% 0 0;
         margin: 5px  2px 5px 5px; 
-    }
+    } */
     /* #left1 div:focus{
         background-color: rgb(111,234,246);
     } */
@@ -211,6 +211,12 @@
         transform: scale(1.2); 
 		transition: all .3s; 
     } */
+    .seat-blue{
+        background-color: blue;
+    }
+    .seat-black {
+        background-color: black;
+    }
 </style>
 <body>
     <div id="box">
@@ -318,24 +324,65 @@
        </div>
     </div>
     <script>
+        // const seats = document.getElementsByClassName('seat')
+        // const seatsStatus = []
+        // for (let i = 0; i < seats.length ; i++) {
+        //     if (seats[i].style.backgroundColor === 'white') {
+        //         seatsStatus[i] = 'occupied'
+        //     } else {
+        //         seatsStatus[i] = 'empty'
+        //     }
+        //     seats[i].onclick = function(e) {
+        //         // console.log(e);
+        //         if(seatsStatus[i] === 'empty') {
+                    
+        //         }
+        //     }
+            
+
+        // }
+
     var seatdiv=document.getElementsByClassName('seat')
     for(let i=0;i<seatdiv.length;i++){
+        seatdiv[i].classList.add('seat-black')
         seatdiv[i].onclick=function(){
-            //     if(seatdiv[i].style.backgroundColor==='white'){
-            //         console.log(seatdiv[i].style.backgroundColor)
-            //         console.log(i)
-            //         console.log('wowoowo')
-            //         alert('此座位已占领')     
+            // console.log(seatdiv[i].classList.value.indexOf('seat') !== -1);
+            if(seatdiv[i].classList.value.indexOf('seat-black') !== -1) {
+                console.log(seatdiv[i].classList);
+                seatdiv[i].classList.remove('seat-black')
+                console.log(seatdiv[i].classList);
+            
+                seatdiv[i].classList.add('seat-blue')
+                console.log(seatdiv[i].classList);
+
+            } else {
+                seatdiv[i].classList.remove('seat-blue')
+                seatdiv[i].classList.add('seat-black')
+
+            }
+                if(seatdiv[i].style.backgroundColor==='white'){
+                    console.log(seatdiv[i].style.backgroundColor)
+                    console.log(i)
+                    console.log('wowoowo')
+                    alert('此座位已占领')     
+            } 
+            
+            // else if (seatdiv[i].style.backgroundColor === 'rgb(111, 234, 246)') {
+                // seatdiv[i].style.cssText ="background-color:rgb(68,68,81)";
+            // } else {
+            // seatdiv[i].style.cssText ="background-color:rgb(111,234,246)";
             // }
-            //  if(seatdiv[i].style.backgroundColor==='black'){
-            //     console.log(seatdiv[i].style.backgroundColor)
-            //     console.log(i)
-            //     console.log('wowoowo2')
-            // }
-            seatdiv[i].className='seated'
-            console.log(seatdiv[i])
+            
         }
     }
+    // var seateddiv=document.getElementsByClassName('seated')
+    // for(let j=0;j<seateddiv.length;j++){
+    //     seateddiv[j].onclick=function(){
+    //         seateddiv[j].style.cssText ="background-color:rgb(68,68,81)";
+    //         seateddiv[j].classList.remove('seated');
+    //         console.log(j)
+    //     }
+    // }
     </script>
 </body>
 </html>
