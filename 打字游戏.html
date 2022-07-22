@@ -56,9 +56,9 @@ select:focus{
     border-radius: 4px;
     color:white;
     font-size: 25px;
-}
-label{
-    margin-top:auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 </style>
 <body>
@@ -73,7 +73,7 @@ label{
         </div>
     </div>
         <div id="center" class="center">
-            <div class="title"><span>速度打字</span></div>
+            <div class="title">💻<span>速度打字</span>&#x1f4bb;</div>
             <span>剩余时间：<sapn id="timer-span"></sapn></span>
             <span>成绩：</span>
             <button id="start">开始</button>
@@ -84,22 +84,44 @@ label{
         </div>
 </body>
 <script>
+
     var select=document.getElementById('select')
     var start=document.getElementById('start')
     var timer_span=document.getElementById('timer-span')
-    var a=11;
+    var a=5;
     var timer;
+    var timer2;
     var b=0;
-    start.onclick=function(){
-        clearInterval(timer)
-        timer=setInterval
-        (function(){
-            timer_span.innerText=--a;
-            if(a<=0){
-                alert('时间到')
-                clearInterval(timer)
-            }
-        },1000)
+    var ableButton = true; // 按键是否可用,初始值为可用
+    var t1=Date.now()
+
+    start.onclick = function() {
+        if (ableButton) {
+            ableButton = false
+            timer = setInterval(function(){
+              timer_span.innerText = a
+              a = a - 1
+                if (a<0) {
+                    clearInterval(timer)
+                    a = 5
+                    ableButton = true
+                    alert('时间到')
+                }
+            }, 1000)
+     }
     }
+
+    let timer3 = setTimeout(()=>{console.log('Hello');}, 2000)
+    console.log('Hi');
+
+    // start.onclick=setInterval(function(){
+    //         clearInterval(timer)
+    //         timer_span.innerText=--a;
+    //         if(a<=0){
+    //             ableButton = true;
+    //             alert('时间到')
+    //             clearInterval(timer)
+    //         }
+    //     },1000)
 </script>
 </html>
