@@ -32,6 +32,9 @@ select{
 select:focus{
     outline: none;
 }
+#centerouter{
+    text-align: center;
+}
 #center{
     width: 500px;
     height: 250px;
@@ -39,7 +42,8 @@ select:focus{
     box-shadow: 2px 2px 5px black;
     margin: auto;
     margin-top: 150px;
-    position: absolute;
+    /* position: absolute; */
+    display:flow-root;
 }
 .title{
     width: 450px;
@@ -47,6 +51,7 @@ select:focus{
     background-color: rgb(31,43,56);
     margin:auto;
     margin-top: 10px;
+    border-radius: 4px;
 }
 </style>
 <body>
@@ -60,8 +65,11 @@ select:focus{
         </select>
         </div>
     </div>
-    <div id="center" class="center">
-        <div class="title"></div>
+    <div id="centerouter">
+        <div id="center" class="center">
+            <div class="title"></div>
+        </div>
+        <!-- <div class="right" style="margin-left: 50px; background: blue;"></div> -->
     </div>
 </body>
 <script>
