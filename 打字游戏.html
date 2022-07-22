@@ -92,14 +92,14 @@ label{
     var b=0;
     start.onclick=function(){
         clearInterval(timer)
-        timer=setTimeout(setInterval
+        timer=setInterval
         (function(){
             timer_span.innerText=--a;
             if(a<=0){
                 alert('时间到')
                 clearInterval(timer)
             }
-        },1000),10000)
+        },1000)
     }
 </script>
 </html>
