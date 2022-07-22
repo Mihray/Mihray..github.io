@@ -44,6 +44,8 @@ select:focus{
     margin-top: 150px;
     /* position: absolute; */
     display:flow-root;
+    text-align: center;
+    color: white;
 }
 .title{
     width: 450px;
@@ -52,6 +54,11 @@ select:focus{
     margin:auto;
     margin-top: 10px;
     border-radius: 4px;
+    color:white;
+    font-size: 25px;
+}
+label{
+    margin-top:auto;
 }
 </style>
 <body>
@@ -65,14 +72,34 @@ select:focus{
         </select>
         </div>
     </div>
-    <div id="centerouter">
         <div id="center" class="center">
-            <div class="title"></div>
+            <div class="title"><span>速度打字</span></div>
+            <span>剩余时间：<sapn id="timer-span"></sapn></span>
+            <span>成绩：</span>
+            <button id="start">开始</button>
+            <div style="display:flex;flex-direction: column;">
+                <span style="margin-top:20px;font-size: 25px;">11111</span>
+                <input type="text" style="width:300px;height:70px;margin:auto;margin-top:20px;border: 1px solid black;">
+            </div>
         </div>
-        <!-- <div class="right" style="margin-left: 50px; background: blue;"></div> -->
-    </div>
 </body>
 <script>
-
+    var select=document.getElementById('select')
+    var start=document.getElementById('start')
+    var timer_span=document.getElementById('timer-span')
+    var a=11;
+    var timer;
+    var b=0;
+    start.onclick=function(){
+        clearInterval(timer)
+        timer=setTimeout(setInterval
+        (function(){
+            timer_span.innerText=--a;
+            if(a<=0){
+                alert('时间到')
+                clearInterval(timer)
+            }
+        },1000),10000)
+    }
 </script>
 </html>
