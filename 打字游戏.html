@@ -74,12 +74,12 @@ select:focus{
     </div>
         <div id="center" class="center">
             <div class="title">💻<span>速度打字</span>&#x1f4bb;</div>
-            <span>剩余时间：<sapn id="timer-span"></sapn></span>
-            <span>成绩：</span>
+            <span>剩余时间：<span id="timer-span"></span></span>
+            <span>成绩：<span id="score-span"></span></span>
             <button id="start">开始</button>
             <div style="display:flex;flex-direction: column;">
-                <span style="margin-top:20px;font-size: 25px;">11111</span>
-                <input type="text" style="width:300px;height:70px;margin:auto;margin-top:20px;border: 1px solid black;">
+                <span  id="span"style="margin-top:20px;font-size: 25px;"></span>
+                <input type="text" id="input" disabled=true style="width:300px;height:70px;margin:auto;margin-top:20px;border: 1px solid black;">
             </div>
         </div>
 </body>
@@ -88,31 +88,56 @@ select:focus{
     var select=document.getElementById('select')
     var start=document.getElementById('start')
     var timer_span=document.getElementById('timer-span')
-    var a=5;
+    var span=document.getElementById('span')
+    const input = document.getElementById('input')
+    var score_span=document.getElementById('score-span')
+    var a=20;
     var timer;
     var timer2;
-    var b=0;
+    var score=0;
     var ableButton = true; // 按键是否可用,初始值为可用
     var t1=Date.now()
+    let stringArray = ['我❤你','你好啊','早上好','怎么了','真不错','我是最棒的']
+    let stringPostion = 0
 
+
+    span.innerText = stringArray[stringPostion]
+    // console.log(span.n);
+    input.addEventListener('input', ()=>{
+        if (span.innerText ===input.value){
+            score=score+1;
+            console.log('对啦');
+            score_span.innerText=score.toString()
+            input.value=''
+            stringPostion = stringPostion + 1
+            if (stringPostion === stringArray.length) {
+                stringPostion = 0
+            }
+            span.innerText = stringArray[stringPostion]
+        }
+        // span.innerText
+    })
     start.onclick = function() {
+        input.removeAttribute('disabled')
         if (ableButton) {
             ableButton = false
             timer = setInterval(function(){
+
               timer_span.innerText = a
               a = a - 1
                 if (a<0) {
                     clearInterval(timer)
-                    a = 5
+                    input.setAttribute('disabled', true)
+                    a = 20
                     ableButton = true
-                    alert('时间到')
+                    alert('时间到！你的成绩是' + score + '分！')
                 }
             }, 1000)
      }
     }
 
-    let timer3 = setTimeout(()=>{console.log('Hello');}, 2000)
-    console.log('Hi');
+    // let timer3 = setTimeout(()=>{console.log('Hello');}, 2000)
+    // console.log('Hi');
 
     // start.onclick=setInterval(function(){
     //         clearInterval(timer)
