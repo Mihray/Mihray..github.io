@@ -10,6 +10,7 @@
 <body>
     <div id="root"></div>
     <div id="root2"></div>
+    <div id="root3"></div>
 </body>
 <script>
     Vue.createApp({
@@ -53,10 +54,23 @@
         // },
         template:`
             <div>
-            <span v-if="show">hello world<span>
+            <span v-if="show">hello world</span>
             <button v-on:click="handleBtnClick">显示/隐藏</button>
             </div>
             `
     }).mount('#root2');
+
+    Vue.createApp({
+        data(){
+            return {
+                list:['hello','world','dell','lee']
+            }
+        },
+        template:`
+        <ul>
+            <li v-for="item of list">{{item}}</li>
+            </ul>
+            `
+    }).mount('#root3');
 </script>
 </html>
