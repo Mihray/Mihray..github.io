@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据，方法，计算属性和侦听器</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script>
+    //data&methods&computed&watcher
+    //computed和method都能实现的一个功能，建议使用computed,因为有缓存
+    //computed和watcher都能实现的功能，建议使用computed，因为更加简洁
+    const app=Vue.createApp({
+        data(){
+            return {
+                message:'hello world',
+                count:3,
+                price:5,
+                newTotal:15,
+            }
+        },
+        watch:{
+            price(urrent,prev){
+                this.newTotal=cuuent*this.count;
+                // setTimeout(()=>{
+                //     console.log('price changed')
+                // },3000)
+            }
+        },
+        computed:{
+            //当计算属性依赖的内容发生变更时才会重新执行计算
+            total(){
+                return Date.now()+this.count;
+                // return this.count*this.price;
+            }
+        },
+        methods:{
+            formatString(string){
+                return string.toUpperCase();
+            },
+            //只要页面重新渲染就会重新计算
+            getTotal(){
+            return Date.now()
+        },
+        },
+        template:`
+        <div>
+           {{message}} {{getTotal()}}
+        </div>
+        <div>
+           {{message}} {{total}}
+        </div>
+            `
+    });
+    const vm=app.mount('#root')
+</script>
+</html>
