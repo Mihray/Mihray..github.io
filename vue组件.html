@@ -15,7 +15,8 @@
         data(){
             return {
                 list:[],
-                inputValue:''
+                inputValue:'',
+                message:'hello world'
             }
         },
         methods:{
@@ -26,6 +27,7 @@
         },
         template:`
         <div>
+            <div>{{message}}</div>
             <input v-model="inputValue" />
             <button v-on:click="handleAddItem"
                     v-bind:title="inputValue">
@@ -45,6 +47,8 @@
         props:['content','index']
         ,template:`<li>{{content}}--{{index}}</li>`
     });
-    app.mount('#root')
+    //  app.mount('#root')
+     const vm=app.mount('#root')
+     vm.$data.message='bay'
 </script>
 </html>
