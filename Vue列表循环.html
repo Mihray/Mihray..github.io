@@ -8,10 +8,23 @@
     <script src="https://unpkg.com/vue@next"></script>
 </head>
 <body>
-    <div id="root">
-    </div> 
+    <div id="root"></div> 
 </body>
 <script>
-
+    const app=Vue.createApp({
+        data(){
+            return {
+                list:['dell','lee','teacher']
+            }
+        },
+        template:`
+        <div>
+            <div v-for="(item,index) in list">
+                {{item}}--{{index}}
+            </div>
+        </div>
+        `
+    })
+    const vm=app.mount('#root')
 </script>
 </html>
