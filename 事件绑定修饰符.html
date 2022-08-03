@@ -18,15 +18,27 @@
             }
         },
         methods:{
+            handleDivClick(){
+                alert("divclick")
+            },
             handleBtnClick(num,event){
                 console.log(event)
                 this.counter=this.counter+num;
             }
+            
         },
+        //事件修饰符.stop  .self .prevent .capture .once
+        //按键修饰符： enter tab delete up down left right 
+        //鼠标修饰符：left right middle
+        //精确修饰符：exact
+        //冒泡是从内到外，捕获是从外到内
+        //<button @click.stop="handleBtnClick(2,$event)">button</button>
+        //<div @click.self="handleDivClick">
         template:`
         <div>
-            {{counter}}
-            <button @click="handleBtnClick(2,$event)">button</button>
+            <div @click.self="handleDivClick">{{counter}}
+              <button @click="handleBtnClick(2,$event)">button</button>
+            </div>
         </div>
         `
     })
