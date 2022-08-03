@@ -14,14 +14,38 @@
     const app=Vue.createApp({
         data(){
             return {
-                list:['dell','lee','teacher']
+                listArray:['dell','lee','teacher'],
+                listObject:{
+                    firstName:'dell',
+                    lastName:'lee',
+                    job:'teacher'
+                }
+            }
+        },
+        methods:{
+            handleAddBtnClick(){
+                //1.使用数组的变更函数push ,pop,shift,unshift,splice,sort,reverse
+                // this.listArray.push('hello')  //添加
+                // this.listArray.pop('hello') //从下面删除
+                // this.listArray.shift('hello')  //从上面删除
+                // this.listArray.unshift('hello') //从上面添加
+                // this.listArray.splice('hello')  //都删除
+                // this.listArray.sort('hello') //排序
+                // this.listArray.reverse('hello')
+
+                //2.直接替换数组
+                this.listArray=['bye','world']
             }
         },
         template:`
         <div>
-            <div v-for="(item,index) in list">
-                {{item}}--{{index}}
-            </div>
+            <template v-for="(value,key,index) in listObject"  :key="index">
+                <div v-if="key !=='lastName'">
+                    {{value}}--{{key}}
+                 </div>
+           </template>
+            <div v-for="item in 10">{{item}}</div>
+            <button @click="handleAddBtnClick">新增</button>
         </div>
         `
     })
