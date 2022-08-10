@@ -8,19 +8,75 @@
     <script src="https://unpkg.com/vue@next"></script>
 </head>
 <body>
-    
+    <div id="root"></div>
 </body>
 <script>
-const _getExFilename = (filename) => {
-    arr=filename.split('.')
-    console.log('.'+arr[1])
-    return '.+arr[1]';
-    // for(var i=0;i<=arr.length;i++){
-    //     if(arr[i]==="."){
-    //         return arr[i+1]+arr[i+2]
-    //     }
-    // }
-}
-_getExFilename('problem.xml')
+    //input textarea checkbox radio select 
+    //修饰符 lazy,number,trim
+    //trim 在数据项存内容的时候把数据项左右边的空格给去除掉
+    //lazy  input框失去焦点的时候才会触发事件
+    //number 让存储的内容转换成数据类型
+    const app=Vue.createApp({
+        data(){
+            return {
+                message:[],
+                message2:'',
+                message3:'',
+                //支持多选
+                message4:[],
+                message5:[],
+                options:[{
+                    text:'A',value:'A'
+                },{
+                    text:'B',value:'B'
+                },{
+                    text:'C',value:'C'
+                }],
+                message6:'world',
+            }
+        },
+        template:`
+        <div>
+            <div>
+                {{message}}
+                jack<input type="checkbox" v-model="message" value="jack"/>
+                dell<input type="checkbox" v-model="message" value="dell"/>
+                lee<input type="checkbox" v-model="message" value="lee"/>
+            </div>
+            <div>
+                {{message2}}
+                jack<input type="radio" v-model="message2" value="jack"/>
+                dell<input type="radio" v-model="message2" value="dell"/>
+                lee<input type="radio" v-model="message2" value="lee"/>
+            </div>
+            <div>
+                {{message3}}
+                <select v-model="message3">
+                    <option disabled value=''>请选择内容</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+            </div>
+            <div>
+                {{message4}}
+                <select v-model="message4" multiple>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+            </div>
+            <div>
+                {{message5}}
+                <select v-model="message5" multiple>
+                    <option v-for="item in options" :value="item.value">{{item.text}}</option>
+                </select>
+            </div>
+            <div>
+                {{message6}}
+                <input type="checkbox" v-model="message6" true-value="hello" false-value="world"/>
+            </div>
+        </div>
+        `
+    });
+    const vm=app.mount('#root');
 </script>
 </html>
