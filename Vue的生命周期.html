@@ -15,17 +15,24 @@
     const app=Vue.createApp({
         data(){
             return {
-                message:'hello world'
+                message:'hello world',
+                number:0,
             }
         },
-        // methods:{
-        //     handleItemClick(){
-        //         alert('click')
-        //     }
-        // }
+        methods:{
+            handleItemClick(){
+                alert('click')
+            }
+            ,
+            add(){
+                console.log(this.number);
+                this.$data.number ++
+                console.log(this.number);
+            }
+        },
         mounted(){
             // alert('mounted')
-            console.log(document.getElementById('root').innerHTML,'mounted')
+            console.log(document.getElementById('root').innerHTML,'mounted')            
         },
         //在组件内容被渲染到页面之前立即执行的函数
         beforeMount(){
@@ -45,11 +52,13 @@
         beforeUpdate(){
             console.log(document.getElementById('root').innerHTML)
             console.log('beforeUpdate')
+            console.log(`我还没更新，现在number是${this.number}`);
         },
         //当data中的数据发生变化，同时页面重新渲染后会自动执行的函数
         updated(){
             console.log(document.getElementById('root').innerHTML)
             console.log('updated')
+            console.log(`我更新了，现在number是${this.number}`);
         },
         //在模版已经被编程函数之后立即自动执行的函数
         // beforeMount(){
@@ -65,7 +74,11 @@
             console.log(document.getElementById('root').innerHTML)
             console.log('unmounted')
         },
-        template:`<div v-on:click="handleItemClick">{{message}}</div>`
+        template:`
+        <div v-on:click="handleItemClick">{{message}}</div>
+        <div>{{number}}</div>
+        <button @click="add">增加</button>
+        `
 });
 const vm=app.mount('#root')
 </script>

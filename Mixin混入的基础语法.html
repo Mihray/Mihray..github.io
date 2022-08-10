@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>Mixin混入的语法基础</title>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script>
+    //mixin混入
+    //组件data,methods优先级高于mixin data,methods优先级
+    //生命周期函数，先执行mixin里面的，再执行组件里面的
+    const myMixin={
+        data(){
+            return {
+                number:2,
+                count:222
+            }
+        },
+        created(){
+            console.log('mixin created')
+        },
+        methods:{
+            handleClick(){
+                console.log('mixin handleClick')
+            },
+        },
+    }
+    const app=Vue.createApp({
+        data(){
+            return{
+                number:1
+            }
+        },
+        created(){
+            console.log('created')
+        },
+        mixins:[myMixin],
+        methods:{
+            handleClick(){
+                console.log('handleClick')
+            },
+        },
+        template:`
+        <div>
+            <div>{{number}}</div>
+            <div>{{count}}</div>
+            <button @click="handleClick">增加</button>
+        </div>
+        `
+    })
+    const vm=app.mount('#root');
+</script>
+</html>
