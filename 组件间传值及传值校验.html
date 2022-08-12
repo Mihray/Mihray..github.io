@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>组件间传值及传值校验</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script>
+    const app=Vue.createApp({
+        data(){
+            return {
+                num:123,
+            }
+        },
+        //绑定前面加：或这v-bind 是动态传参，不加是静态传参
+        template:`
+        <div><test v-bind:content="num"/></div>`
+    })
+    app.component('test',{
+        //校验type：String,Boolean,Array,Object,Function,Symbol
+        //required 必填
+        //default 默认值
+        //validator 深度的校验
+        props:{
+            content:String,
+        },
+        template:`<div>{{ typeof content}}</div>`
+    })
+    const vm=app.mount('#root')
+</script>
+</html>

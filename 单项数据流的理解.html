@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>单项数据流的理解</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script>
+    //v-bind="params"
+    //属性传的时候使用 content-abc 这种命名，接的时候使用contentAbc命名
+    //单项数据流的概念：子组件可以使用父组件传递过来的数据，但是绝对不能修改传递过来的数据
+    const app=Vue.createApp({
+        data(){
+            return {
+                params:{
+                    content:1234,
+                a:123,
+                b:456,
+                c:789,
+                count:1,
+                }
+            }
+        },
+        template:`
+        <div><test v-bind="params"/></div>
+        `
+    });
+    //不能改变从父组件传递过来的数据
+    app.component('test',{
+        props:['content','a','b','c','d','count'],
+        data(){
+            return {
+                //可以把传过来的数据复制一份给mycount 就可以改变数据了
+                myCount:this.count,
+            }
+        },
+        template:`
+        <div>{{content}}-{{a}}-{{b}}-{{c}}</div>
+        <div @click="myCount+=1">{{myCount}}</div>
+        `
+    })
+    const vm=app.mount('#root')
+</script>
+</html>
