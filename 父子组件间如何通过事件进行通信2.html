@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>父子组件间如何通过事件进行通信</title>
+    <title>父子组件间如何通过事件进行通信2</title>
     <script src="https://unpkg.com/vue@next"></script>
 </head>
 <body>
@@ -17,34 +17,19 @@
                 count:1,
             }
         },
-        methods:{
-            handleAddOne(param){
-                this.count+=param;
-            } 
-        },
         template:`
-        <div>
-            <counter :count="count" @add-one="handleAddOne"/>
-        </div>
+            <counter v-model="count"/>
         `
     });
     app.component('counter',{
-        props:['count'],
-        emits:{
-            add:(count)=>{
-                if(count<0){
-                    return true;
-                }
-                return false;
-            }
-        },
+        props:['modelValue'],
         methods:{
             handleItemClick(){
-                this.$emit('addOne',2)
+                this.$emit('update:modelValue',this.modelValue+4)
             }
         },
         template:`
-        <div @click="handleItemClick">{{count}}</div>
+        <div @click="handleItemClick">{{modelValue}}</div>
         `
     })
     const vm=app.mount('#root')
