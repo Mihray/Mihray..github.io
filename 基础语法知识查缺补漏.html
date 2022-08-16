@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基础语法知识查缺补漏</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script>
+    //v-once让某个元素标签只渲染一次
+    //ref 实际上是获取dom节点用的一个语法
+     const app=Vue.createApp({
+        data(){
+            return {
+                count:1,
+            }
+        },
+        template:`
+        <div @click="count+=1" v-once>
+            {{count}}
+        </div>
+        `
+    });
+    app.component('list',{
+        data(){
+            return {
+                list:[1,2,3]
+            }
+        },
+        template:`
+        <div>
+            <slot v-for="item in list" :item="item"/>
+        </div>
+        `
+    })
+    const vm=app.mount('#root')
+</script>
+</html>
