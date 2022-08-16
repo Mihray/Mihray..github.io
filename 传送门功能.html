@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>传送门功能</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<style>
+    .area{
+        position:absolute;
+        left:50%;
+        top:50%;
+        transform:translate(-50%,-50%);
+        width:200px;
+        height:300px;
+        background:green;
+    }
+    .mask{
+        position: absolute;
+        top:0;
+        left:0;
+        right:0;
+        bottom:0;
+        background:#000;
+        opacity:0.5;
+
+    }
+</style>
+<body>
+    <div id="root"></div>
+</body>
+<script>
+    //teleport 传送门
+     const app=Vue.createApp({
+        data() {
+            return {
+                show:false,
+            }
+        },
+        methods:{
+            handleBtnClick(){
+                this.show=!this.show;
+            }
+        },
+        template:/*html*/`
+        <div class="area">
+            <button @click="handleBtnClick">按钮</button>
+            <teleport to="body">
+              <div class="mask" v-show="show"></div>
+            </teleport>
+        </div>
+        `
+    });
+    const vm=app.mount('#root')
+</script>
+</html>
