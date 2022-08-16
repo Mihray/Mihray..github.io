@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开发实现Vue中的自定义指令</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<style>
+    .header{
+        position:absolute;
+    }
+    .header1{
+        position:absolute;
+    }
+</style>
+<body>
+    <div id="root"></div>
+</body>
+<script>
+    //自定义指令 directive
+     const app=Vue.createApp({
+        data() {
+            return {
+                top:110,
+                distance:100
+            }
+        },
+        template:`
+        <div>
+            <div v-pos="top" class="header">
+                <input />
+            </div>
+        <div/>
+        <div>
+            <div v-pos1:right="distance" class="header1">
+                <input />
+            </div>
+        <div/>
+        `
+    });
+    //跟下面的代码等价
+    app.directive('pos',(el,binding)=>{
+        el.style.top=(binding.value+'px')
+    })
+    // app.directive('pos',{
+    //     mounted(el,binding) {
+    //         el.style.top=(binding.value+'px');
+    //     },
+    //     updated(el,binding) {
+    //         el.style.top=(binding.value+'px');
+    //     },
+       
+    // })
+
+    app.directive('pos1',(el,binding)=>{
+        el.style[binding.arg]=(binding.value+'px')
+    })
+    const vm=app.mount('#root')
+</script>
+</html>
