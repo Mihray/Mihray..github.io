@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>插件的定义和使用</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script>
+    //plugin 插件
+    const myPlugin={
+        install(app,options){
+            console.log(app,options)
+        }
+    }
+    const app=Vue.createApp({
+        date(){
+            return {
+
+            }
+        },
+        methods:{
+
+        },
+        template:/*html*/`
+        <div>
+            <my-title>
+        </div>
+        `
+    })
+    app.component('my-title',{
+        template:/*html*/`
+        <div>hello</div>
+        `
+    })
+    app.use(myPlugin,{
+        name:'dell'
+    })
+    const vm=app.mount('#root')
+</script>
+</html>
