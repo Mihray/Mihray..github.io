@@ -11,10 +11,21 @@
     <div id="root"></div>
 </body>
 <script>
-    //plugin 插件
+    //plugin 插件,也是把通用性的功能封装起来
     const myPlugin={
         install(app,options){
-            console.log(app,options)
+            app.provide('name','Dell Lee')
+            app.directive('focus',{
+                mounted(el){
+                    el.focus();
+                }
+            })
+            app.mixin({
+                mounted(){
+                    console.log('mixin')
+                }
+            })
+            app.config.globalProperties.$sayHello='hello world'
         }
     }
     const app=Vue.createApp({
@@ -27,18 +38,20 @@
 
         },
         template:/*html*/`
-        <div>
-            <my-title>
-        </div>
+            <my-title/>
         `
     })
     app.component('my-title',{
+        inject:['name'],
+        mounted(){
+            console.log(this.$sayHello);
+        },
         template:/*html*/`
-        <div>hello</div>
+        <div>{{name}}<input v-focus/></div>
         `
     })
     app.use(myPlugin,{
-        name:'dell'
+        
     })
     const vm=app.mount('#root')
 </script>
