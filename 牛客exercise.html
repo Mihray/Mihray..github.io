@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <ul></ul>
+
+        <script>
+            var people = [
+                { name: '牛油1号', id: 1, age: 20 },
+                { name: '牛油2号', id: 2, age: 21 },
+                { name: '牛油3号', id: 3, age: 19 },
+            ]
+            var ul = document.querySelector('ul');
+            // 补全代码
+            for(let i=0;i<people.length;i++){
+                var txt=people[i].name+' '+people[i].age+'岁'
+                var li=document.createElement('li')
+                li.innerHTML=txt
+                ul.append(li)
+            }
+            
+        </script>
+    </body>
+</html>
